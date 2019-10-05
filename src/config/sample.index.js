@@ -1,6 +1,7 @@
 export default {
-  bedrooms: [
+  rooms: [
     {
+      type: "bedroom",
       name: "Bedroom 1",
       devices: {
         light  : { id: "", data: null },
@@ -9,6 +10,7 @@ export default {
       }
     },
     {
+      type: "bedroom",
       name: "Bedroom 2",
       devices: {
         light  : { id: "", data: null },
@@ -28,4 +30,10 @@ export default {
       }
     }
   ],
+  cameras: [
+    {
+      name: "Salon",
+      url: "https://picsum.photos/640/480"
+    },
+  ]
 }

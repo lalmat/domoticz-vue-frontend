@@ -3,14 +3,14 @@
     <div> 
       Main Screen
     </div>
-    <router-view :rooms="rooms" :units="units"></router-view>
+    <router-view :config="config" :units="units"></router-view>
   </div>
 </template>
 
 <script>
 import { EventBus } from "./libs/event-bus";
 import Domoticz     from "./libs/domoticz";
-import RoomsConfig  from "./config";
+import config       from "./config";
 
 export default {
   name: "app",
@@ -22,7 +22,7 @@ export default {
         degrees: '°C',
         humidity: '%'
       },
-      rooms: RoomsConfig
+      config
     };
   },
 
@@ -41,7 +41,7 @@ export default {
 
     async update_devices() {
       console.log('updating devices...');
-      this.rooms = await Domoticz.update_devices(this.rooms);
+      this.config.rooms = await Domoticz.update_devices(this.config.rooms);
     },
 
     start_refresh() {
