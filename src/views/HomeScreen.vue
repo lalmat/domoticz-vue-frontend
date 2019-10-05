@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-6">
-        <bedroom v-for="bedroom in dz.bedrooms" 
+        <bedroom v-for="bedroom in bedrooms" 
           :key="bedroom.name"
           :bedroom="bedroom" 
           :units="units"/>
@@ -24,9 +24,17 @@ export default {
     'bedroom': Bedroom,
     'security-panel': SecurityPanel
   },
+
   props: [
-    'dz',
+    'rooms',
     'units'
-  ]  
+  ],
+
+  computed: {
+    bedrooms() {
+      return (this.rooms) ? this.rooms.filter( room => room.type == "bedroom" ) : [];
+    }
+  },
+
 }
 </script>

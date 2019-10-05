@@ -21,11 +21,11 @@ export default {
 
   inverse (value) {
     if (typeof value !== 'string') return "-";
-    if (value.indexOf('Set Level:') >= 0) return "Open";
-    if (value == "On")    return "Off";
-    if (value == "Off")   return "On";
-    if (value == "Close") return "Open";
-    if (value == "Open")  return "Close";
+    if (value.indexOf('Set Level:') >= 0) return "Off";
+    if (value == "On")     return "Off";
+    if (value == "Off")    return "On";
+    if (value == "Closed") return "Off";
+    if (value == "Open")   return "On";
     return "-";
   },
 

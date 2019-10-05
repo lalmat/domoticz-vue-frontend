@@ -1,7 +1,7 @@
 <template>
   <div class="row bedroom-item p-1 m-1">
-    <div class="col-1 align-bottom">
-      <i class="fas fa-bed" style="font-size:1.3rem" />
+    <div class="col-2">
+      <i class="fas fa-bed bedroom-icon" />
     </div>
     <div class="col-3">
       {{ bedroom.name }}
@@ -14,15 +14,11 @@
       <i class="fas fa-tint" /><br />
       {{ humidity.value }}{{ units.humidity }} 
     </div> 
-    <div class="col-2">
-      <button class="btn btn-secondary" @click="switch_device(light.idx, light.inverse)">
-        <i :class="light_class" />
-      </button>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-secondary" @click="switch_device(shutter.idx, shutter.inverse)">
-        <i :class="shutter_class" />
-      </button>
+    <div class="col-3">
+      <b-button-group>
+        <b-button @click="switch_device(light.idx, light.inverse)"><i :class="light_class" /></b-button>
+        <b-button @click="switch_device(shutter.idx, shutter.inverse)"><i :class="shutter_class" /></b-button>
+      </b-button-group>
     </div>
   </div>
 </template>
@@ -67,9 +63,9 @@
         return {
           'fa-square'   : (this.shutter.state != "-"),
           'fa-ban'      : (this.shutter.state == '-'),
-          'far'         : (this.shutter.state == 'Open'),
-          'fas'         : (this.shutter.state == 'Close' || this.shutter.state == '-'),
-          'text-success': (this.shutter.state == 'Open')
+          'far'         : (this.shutter.state == 'Off'),
+          'fas'         : (this.shutter.state == 'On' || this.shutter.state == '-'),
+          'text-success': (this.shutter.state == 'On')
         }
       },
 
@@ -86,5 +82,9 @@
 .bedroom-item {
   background-color: rgba(255, 255, 225, 0.3);
   border-radius: 0.2rem;
+}
+.bedroom-icon {
+  font-size:1.3rem; 
+  vertical-align: -0.8rem;
 }
 </style>
